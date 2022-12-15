@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PuradakGentleGothicR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.Home_main {
+    width: 100%;
+    position: fixed;
+    top: 20%;
+    text-align: center;
+}
+.Home_main h1{
+    font-size: 3em;
+    font-family: 'PuradakGentleGothicR';
+}
+
+.Home_main h4, .Home_main p{
+    font-size: 1.5em;
+    font-family: 'GangwonEdu_OTFBoldA';
+}
