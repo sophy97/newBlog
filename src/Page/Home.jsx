@@ -2,6 +2,7 @@ import { useEffect, useMemo } from "react";
 import { useState } from "react";
 import Slider from "react-slick";
 import '../css/Home.css';
+import HomeLink from '../components/HomeLink';
 
 const Home = () => {
     // 현재 시간 출력
@@ -109,6 +110,8 @@ const Home = () => {
                     변수 안에 존재 > 따라서 사용할 때 함수실행X, 변수이름으로만 사용함 */}
                 <h4>{printWord.text}</h4>
                 <p>{printWord.author}</p>          
+
+                <HomeLink />
             </div>
             </>
         </div>

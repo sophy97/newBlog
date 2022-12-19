@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#env
+# 이 파일을 먼저 gitignore에 적은 후  git add .
+.env

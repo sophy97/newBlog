@@ -1,12 +1,6 @@
 @font-face {
-    font-family: 'GangwonEdu_OTFBoldA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'PuradakGentleGothicR';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
+    font-family: 'KyoboHandwriting2020A';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/KyoboHandwriting2020A.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -14,15 +8,36 @@
 .Home_main {
     width: 100%;
     position: fixed;
-    top: 20%;
+    top : 25%;
+    padding-bottom: 30px;
     text-align: center;
-}
-.Home_main h1{
-    font-size: 3em;
-    font-family: 'PuradakGentleGothicR';
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
-.Home_main h4, .Home_main p{
+.Home_main h1{
+    font-size: 4em;
+}
+.Home_main>p{
+    margin: 0;
     font-size: 1.5em;
-    font-family: 'GangwonEdu_OTFBoldA';
+    font-family: 'KyoboHandwriting2020A';
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+/* p태그의 동위선택연산자, p태그 바로 뒤의 p태그를 선택한다*/
+.Home_main>p+p{
+    color: darkblue;
+}
+
+.Home_Link {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    padding-top: 20px;
+}
+.Home_Link a {
+    text-decoration: none;
+    color: black;
+    margin: 0px 10px;
 }
