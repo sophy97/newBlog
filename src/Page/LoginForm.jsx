@@ -26,7 +26,7 @@ const LoginForm = () => {
 
   // 이메일로 회원가입하기위한 함수
   const emailCreate = () => {
-    // getAuth는 파이어베이스앱에서 인증 부분을 받아오는 함수
+    // *getAuth는 파이어베이스앱에서 인증 부분을 받아오는 함수
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -119,7 +119,7 @@ const emailLogin = () => {
       <Container>
         <Row>
           <Col>
-          <Button variant="outline-primary" onClick={emailCreate} className='create_btn'>아래 이메일과 비밀번호로 회원가입</Button>
+          <Button variant="link" onClick={emailCreate} className='create_btn'>아래 정보로 회원가입하기</Button>
           </Col>
         </Row>
         <Row>
@@ -138,12 +138,13 @@ const emailLogin = () => {
                 <Form.Label>비밀번호</Form.Label>
                 <Form.Control type="password" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}} />
               </Form.Group>
-              <Button variant="primary" type="submit" className="my-margin-auto">
-                로그인
-              </Button>
+              <div className="my-center">
+                <Button variant="primary" type="submit">로그인</Button>
+                <hr />
+                <p className="hint_text"> 소셜 아이디로 로그인 </p> 
+                <Button variant="outline-danger" onClick={googleLogin}>구글로 로그인</Button>
+              </div>
             </Form>
-            <br /> 
-            <Button variant="outline-danger" onClick={googleLogin}>구글로 로그인</Button>
           </Col>
         </Row>
       </Container>

@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from './Page/Home';
 import LoginForm from './Page/LoginForm';
+import Guest from './Page/Guest';
 
 // Routes와 Route를 이용해 화면 관리
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/loginform' element={<LoginForm />} />
+        <Route path='/guest' element={<Guest />} />
       </Routes>
     </div>
   );
