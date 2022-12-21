@@ -1,3 +1,4 @@
+import { Container, Navbar } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom'
 import { userLogout } from '../modules/currentUser';
@@ -17,7 +18,9 @@ const HomeLink = () => {
                 user ? 
                 /**로그인했을때 보이는 화면, 
                  * 단 관리자페이지는 홈페이지주인만보이기 */
-                (<div>
+                (
+                <Navbar expand="lg" variant="light" bg="light" style={{borderRadius:'10px'}} >
+                <Container>
                     <Link>포스트</Link>
                     <Link to='/guest'>방명록</Link>
                     <Link>관리자페이지</Link>
@@ -25,15 +28,19 @@ const HomeLink = () => {
                     <Link onClick={()=>{
                         dispatch(userLogout());
                         alert("로그아웃 되었습니다")}}>로그아웃</Link>
-                </div>)
+                </Container>
+                </Navbar>
+                )
                 :
                 /** 로그인되어있지 않을때 보여지는 링크 */
                 (
-                    <div>
+                    <Navbar expand="lg" variant="light" bg="light" style={{borderRadius:'10px'}} >
+                        <Container>
                         <Link>포스트</Link>
                         <Link to='/guest'>방명록</Link>
                         <Link to='/loginform'>로그인</Link>
-                    </div>
+                        </Container>
+                    </Navbar>
                 )
             }
 

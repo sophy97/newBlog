@@ -5,7 +5,10 @@ import { combineReducers } from "redux";
 // 작성한 리덕스 모듈 연결하기
 import currentUser from "./currentUser";
 import guest from "./guest";
+import posts from "./posts";
 
-const rootReducer = combineReducers({ currentUser, guest });
+const rootReducer = combineReducers({ 
+    currentUser, guest, posts 
+});
 
 export default rootReducer;

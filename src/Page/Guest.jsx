@@ -55,13 +55,11 @@ const Guest = () => {
             >작성</Button>
             <hr />
             <h4>작성된 방명록 출력공간</h4> <br />
-            <Card style={{ width:"60%" }}>
+            <Card style={{ width:"80%" }}>
                 <ListGroup variant="flush">
                     {
                         guestList.map((guest)=> (
-                        <div key={guest.guestId}>
-                            <PrintGuest guest={guest} />
-                        </div> 
+                        <PrintGuest key={guest.guestId} guest={guest} />
                         ))
                     }
                 </ListGroup>
@@ -74,7 +72,7 @@ export default Guest;
 
 
 // +추가
-// 방명록 내용을 하나씩 출력할 공간을 컴포넌트로 작성
+// 방명록 내용을 하나씩 출력할 공간을 컴포넌트로 따로 작성
 // react-bootstrap 의 ListGroup.Item에 출력하고자 함
 const PrintGuest =({guest})=> {
     return (
