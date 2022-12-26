@@ -1,14 +1,12 @@
-/** 포스트 작성 폼 +(수정도 여기서)
+/** 포스트 수정 form
  *  Route 주소: '/posts/modifyform'
  *  수정 후 수정완료 버튼 연결해서 바뀐값 업데이트 해주기
 */
 import { useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { modifyPost } from "../modules/posts";
-
-
 
 
 
@@ -16,6 +14,9 @@ const PostWriteForm = () => {
 
     const location = useLocation();
     const [posts, setPosts] = useState(location.state);
+
+    // 로그인 값 들고오기
+    const user = useSelector((state)=>(state.currentUser));
 
     // 리덕스에서 들고오고, 라우터로 페이지 이동
     const dispatch = useDispatch();
@@ -47,8 +48,7 @@ const PostWriteForm = () => {
                 </Col>
             </Row>
             <Row>
-                <Col>{posts.userName}/{posts.userEmail}</Col>
-                
+                <Col>{user.userName}/{user.userEmail}</Col>
             </Row>
             <Row className="my-4">
                 <Col>

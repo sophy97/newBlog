@@ -10,7 +10,7 @@ const initialState = [
         title:"첫 게시글",
         content:"첫 게시글의 내용! 문자열",
         view: 0,
-        like: 1, //좋아요 누른 사람 리스트
+        like: 0, //좋아요 누른 사람 리스트
     },
     {
         postId:2,
@@ -19,7 +19,7 @@ const initialState = [
         title:"두번째 게시글",
         content:"두번째 게시글내용!으악으악",
         view: 0,
-        like: 1, //좋아요 누른 사람 리스트
+        like: 0, //좋아요 누른 사람 리스트
     },
 ]
 
@@ -31,9 +31,9 @@ let postId = 3;
 function posts (state=initialState, action) {
     switch (action.type) {
 
-        // 변경할값: 포스트 수정과 삭제
-        // 삭제 : 현재 게시글 id찾아서 그것만 제외하고 새 배열을 만듦(filter()) > 그 내용을 return에 전달
+        // 변경할값: 포스트 수정과 삭제 , 새 포스트값 받아와서 id부여 후 추가
         case "deletePost" :
+            // 삭제 : 현재 게시글 id찾아서 그것만 제외하고 새 배열을 만듦(filter()) > 그 내용을 return에 전달
             // action.payload로 현재 게시글 id 들고와서 게시물의 postId와 비교
             const newPostList = state.filter((posts)=>( posts.postId != action.payload ))
             return newPostList;
@@ -45,6 +45,24 @@ function posts (state=initialState, action) {
                 (posts)=>
                 (posts.postId == action.payload.postId ? action.payload : posts))
             return modifiedPost;
+        case "addPost" :
+            // 새 포스트값 받아와, postId를 부여 후에
+            // > 기존 배열(posts state)에 concat으로 추가
+            // action.payload에 담을 값들 - userEmail, title, content
+            // 리덕스에서 - postId, view, like값들
+            const newPost ={
+                ...action.payload,
+                postId : postId,
+                view:0, like:0
+            }
+            postId++;
+            return state.concat(newPost);
+        case "updateView" :
+            // 같은 postId값이라면 나머지값은 그대로, view만 +1 해준다
+            return state.map((posts)=>( 
+                posts.postId == action.payload 
+                ? ({...posts, view:posts.view+1})
+                : (posts) ));
         default :
             return state;
     }
@@ -53,6 +71,8 @@ function posts (state=initialState, action) {
 // 리듀서 액션함수 생성
 export const deletePost =(id)=>({ type:"deletePost", payload:id });
 export const modifyPost =(posts)=>({ type:"modifyPost", payload:posts });
+export const addPost =(posts)=>({ type:"addPost", payload:posts });
+export const updateView =(id)=>({ type:"updateView", payload:id });
 
 
 

@@ -10,6 +10,9 @@ import Guest from './Page/Guest';
 import Posts from './Page/Posts';
 import PostPage from './Page/PostPage';
 import PostWriteForm from './Page/PostWriteForm';
+import PostAddForm from './Page/PostAddForm';
+import About from './Page/About';
+import Mypage from './Page/Mypage';
 
 // Routes와 Route를 이용해 화면 관리
 function App() {
@@ -19,11 +22,14 @@ function App() {
        *   Layout을 사용해 outlet으로 중첩하여 위치를 잡는다 */}
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
         <Route path='/loginform' element={<LoginForm />} />
         <Route path='/guest' element={<Guest />} />
+        <Route path='/mypage' element={<Mypage />} />
         <Route path='/posts' element={<Posts />} />
         <Route path='/posts/:id' element={<PostPage />} />
         <Route path='/posts/modifyform' element={<PostWriteForm />} />
+        <Route path='/posts/addform' element={<PostAddForm />} />
       </Routes>
     </div>
   );

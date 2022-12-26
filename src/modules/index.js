@@ -6,9 +6,10 @@ import { combineReducers } from "redux";
 import currentUser from "./currentUser";
 import guest from "./guest";
 import posts from "./posts";
+import comments from "./comments";
 
 const rootReducer = combineReducers({ 
-    currentUser, guest, posts 
+    currentUser, guest, posts, comments
 });
 
 export default rootReducer;
