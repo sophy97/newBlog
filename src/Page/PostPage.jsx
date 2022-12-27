@@ -18,7 +18,7 @@ const postList = useSelector((state)=>(state.posts));
 const posts = postList.find((posts)=>(posts.postId == id))
 
 // useSeletor를 이용해서 가져올때 바로 find 사용하기.
-const postFind = useSelector((state)=>(state.posts.find((posts)=>(posts.postId == id))) )
+//const postFind = useSelector((state)=>(state.posts.find((posts)=>(posts.postId == id))) )
 //액션함수 들고오기위한 dispatch
 const dispatch = useDispatch();
 
@@ -72,7 +72,6 @@ const PrintPost =({posts})=> {
         setCommentText("");
     }
 
-    
     // +comments값 들고오기 (useSelector로)
     const comments = useSelector((state)=>(state.comments));
     // filter(): 조건return값이 true인 것만 뽑아 새 배열
@@ -129,7 +128,7 @@ const PrintPost =({posts})=> {
                  * (+초기값이 객체라면, 속성값으로 들어가 확인)
                  * */ }
                     {
-                        postComments.length> 0 
+                        postComments.length > 0 
                         ? (postComments.map((comment)=>(
                         <div>
                             <b>{comment.userEmail}</b> {" : "}

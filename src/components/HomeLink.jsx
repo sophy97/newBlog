@@ -1,3 +1,5 @@
+/* 이거 드롭다운으로 내용 옮기기*/
+
 import { Container, Navbar } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom'

@@ -43,13 +43,11 @@ const PostAddForm = () => {
             <Container>
             <Row>
                 <Col>
-                <input name="title" value={posts.title} 
-                onChange={(e)=>{onChanage(e)}}></input>
+                <input name="title" 
+                value={posts.title} onChange={(e)=>{onChanage(e)}}></input>
                 </Col>
             </Row>
-            <Row>
-                <Col><input type="text">작성자</input></Col>
-            </Row>
+            
             <Row className="my-4">
                 <Col>
                 <textarea name="content" onChange={(e)=>{onChanage(e)}}>

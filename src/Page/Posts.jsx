@@ -1,7 +1,6 @@
 import { Table } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import PostWriteForm from "./PostWriteForm";
 
 const Posts = () => {
 
