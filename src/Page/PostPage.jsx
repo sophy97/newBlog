@@ -4,8 +4,10 @@ import { Button, Col, Container, FloatingLabel, Form, Row } from "react-bootstra
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { addComment } from "../modules/comments";
-import posts, { deletePost, updateView } from "../modules/posts";
+import { addLikeUser, deletePost, updateView } from "../modules/posts";
 import { addLikePost } from "../modules/userInfoList";
+import "../css/PostPage.css";
+
 
 const PostPage = () => {
 // params을 통해서 board의 boardId값 전달
@@ -26,7 +28,7 @@ const dispatch = useDispatch();
 useEffect(()=>{
     //리덕스를 통해 id값(params라서 string임)을 전달 > 그 id값 가진 post값의 view를 +1
     dispatch(updateView(id))
-},[])
+},[]);
 
 
 return ( 
@@ -63,9 +65,9 @@ const PrintPost =({posts})=> {
         // 후 액션함수 불러와서 새값 전달
         dispatch(addComment(
             {
-                postId:posts.postId,
-                userEmail:user.email,
-                text:commentText,
+                postId: posts.postId,
+                userEmail: user.email,
+                text: commentText,
             }
         ))
         // + commentText값 비워주기
@@ -92,50 +94,64 @@ const PrintPost =({posts})=> {
         navigate('/posts/modifyform', {state:posts})
     }
 
-    // 좋아요 함수
-    const onAddLike =()=>{
-        // 전달할 값: userEmail, postId, title (객체로)
-        // +로그인 안 되었다면, dispatch실행 안되게 막아줘야 함
-        const postlike = {
-            userEmail:user.email, 
-            postId: posts.postId, 
-            title: posts.title
-        }
-        dispatch(addLikePost(postlike));
+    // 좋아요 관련 함수 
+  const onAddLike = () => {
+    // **로그인되지 않았다면, dispatch가 되지않게 막기
+    if (!user) {
+      return alert("로그인 후에 좋아요를 누를 수 있습니다")
     }
+    // 전달값 : userEmail, postId, title
+    const postlike = {
+      userEmail: user.email, 
+      postId :posts.postId, 
+      title : posts.title,
+    }
+    dispatch(addLikePost(postlike));
+
+
+    const userlike = {
+        postId : posts.postId,
+        userEmail: user.email,
+    }
+    dispatch(addLikeUser(userlike));
+  }
+
 
 
     return (
         <Container>
             <Row>
-                <Col xs={1}>{posts.postId}</Col>
+            <Col className="postnum">{posts.postId}</Col>
             </Row>
             <Row>
-                <Col><h2>{posts.title}</h2></Col>
+                <Col><span className="goback-btn" onClick={()=>{navigate('/posts')}}> ◀ 목록으로 이동 </span></Col>
+            </Row>
+            <Row>
+                <Col className="post-title"><h2>{posts.title}</h2></Col>
                 {/* 로그인여부(user)에 따라 수정,삭제권한 부여하기 
                     &&로 묶인 삼항연산자 : 모두 참일때만 뒤에 컴포넌트를 출력
-                    user 가 존재하고, user의 email이 posts모듈의 userEmail값과 같을때만 수정, 삭제권한
-                */}
+                    user 가 존재하고, user의 email이 posts모듈의 userEmail값과 같을때만 수정, 삭제권한 */}
                 {
-                    user && user.email == posts.userEmail 
+                    user && user.email === posts.userEmail 
                     &&
                     <Col>
                     <Button onClick={()=>{toModifyPost(posts)}}>수정</Button>
                     <Button onClick={()=>{onDeletePost(posts.postId)}}>삭제</Button>
                     </Col>
                 }
-                
             </Row>
             <Row>
                 <Col>작성자: <b>{posts.userEmail}</b></Col>
             </Row>
             <Row className="my-4">
-                <Col>{posts.content}</Col>
+                <Col>
+                <div className="post-content">{posts.content}</div>
+                </Col>
             </Row>
             <Row>
                 <Col>조회수{posts.view}</Col>
                 <Col>
-                <span onClick={onAddLike}>좋아요{posts.like}</span>
+                <span onClick={onAddLike}>좋아요 {posts.like.length}</span>
                 </Col>
             </Row>
             <hr />
@@ -182,7 +198,7 @@ function CommentInput(props) {
             value={commentText} 
             onChange={(e)=>{setCommentText(e.target.value)}} />
         </FloatingLabel>
-        <button onClick={onAddComment}>댓글 등록</button>
+        <button className="comment-btn" onClick={onAddComment}>댓글 등록</button>
     </>
     );
 }

@@ -21,11 +21,11 @@ const Home = () => {
     // 글귀나 명언 출력
     // 여러개[{},{}..]:배열 안 객체형태 중 랜덤 선택해서 출력할 예정
     const [words, setWords] = useState([
-        {text:"노여움은 한때의 광기다. 노여움을 누르지 않으면 노여움이 당신을 누르고 만다", author:"호라티우스"},
-        {text:"분노는 무모함으로 시작해 후회로 끝난다", author:"피타고라스"},
-        {text:"화가 날 때는 10가지 세어라. 화가 너무 많이 날 때는 100가지 세어라", author:"토머스 제퍼슨"},
-        {text:"분노하여 가하는 일격은 결국 우리 자신을 때린다", author:"윌리엄 펜"},
-        {text:"한때의 분함을 참으면 백날의 근심을 면한다", author:"명심보감"},
+        {text:"You must do the things you think you cannot do", author:"Eleanor Roosevelt"},
+        {text:"The Future depends on what you do today", author:"Mahatma Gandhi"},
+        {text:"Life has no limitations, except the ones you make", author:"Les Brown"},
+        {text:"Love seems the swiftest, but it is the slowest of all growths", author:"Mark Twain"},
+        {text:"Victory is sweetest when you've known defeat", author:"Malcolm S.Forbes"},
     ]);
     
 
@@ -94,9 +94,9 @@ const Home = () => {
                                 <div
                                 style={{
                                     width:"100%",
-                                    height:"100vh",
+                                    height:"65vh",
                                     backgroundImage :'url('+require("../img/"+img)+')',
-                                    backgroundSize : "cover"
+                                    backgroundSize:"cover"
                                 }}></div>
                             </div>
                             ))
@@ -108,11 +108,10 @@ const Home = () => {
                 {/* 배열 안 {명언}중 하나를 출력 */}
                 {/* useMemo사용한 경우, 그 함수의 return값이 
                     변수 안에 존재 > 따라서 사용할 때 함수실행X, 변수이름으로만 사용함 */}
-                <h4>{printWord.text}</h4>
+                <h3>{printWord.text}</h3>
                 <p>{printWord.author}</p>          
-
-                <HomeLink />
             </div>
+            <HomeLink />
             </>
         </div>
     );

@@ -17,11 +17,11 @@ const Mypage = () => {
             <ul>
                 {/* userInfo안의 like[]를 map으로 출력한다 */}
                 {
-                    userInfo.like.map((like)=>{
+                    userInfo.like.map((like)=>(
                         <li key={like.postId}>
                             {like.title}
                         </li>
-                    })
+                    ))
                 }
             </ul>
         </div>

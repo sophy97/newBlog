@@ -2,11 +2,12 @@
 
 import { Container, Navbar } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { userLogout } from '../modules/currentUser';
+
 const HomeLink = () => {
     
-    // 리덕스의 state값을 가져와서 확인 > useSelector로 값 선택해서 들고옴
+    // 리덕스의 state값을 가져와서 확인 > useSelector로 값 선택해서 가져온다
     // currentUser.js의 전체 state값 까지 접근: "user"
     const user = useSelector((state)=>(state.currentUser));
     // currentUser.js에서 만든 액션함수 불러오기 위한 dispatch
@@ -16,7 +17,7 @@ const HomeLink = () => {
         <div className='Home_Link'>
             {
                 user ? 
-                /**로그인했을때 보이는 화면 */
+                /** 로그인된 유저가 볼 화면 */
                 (
                 <Navbar expand="lg" style={{borderRadius:'10px'}} >
                 <Container>
@@ -25,13 +26,12 @@ const HomeLink = () => {
                     <Link to='/guest'>방명록</Link>
                     <Link onClick={()=>{
                                 dispatch(userLogout());
-                                alert("로그아웃 되었습니다")}}>
-                                로그아웃</Link>
+                                alert("로그아웃 되었습니다")}}> 로그아웃</Link>
                 </Container>
                 </Navbar>
                 )
                 :
-                /** 로그인되어있지 않을때 */
+                /** 로그인하지 않은 유저가 볼 화면 */
                 (
                 <Navbar expand="lg" style={{borderRadius:'10px'}} >
                     <Container>
@@ -43,7 +43,6 @@ const HomeLink = () => {
                 </Navbar>
                 )
             }
-
         </div>
     );
 }

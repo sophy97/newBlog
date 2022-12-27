@@ -10,7 +10,7 @@ const initialState = [
         title:"첫 게시글",
         content:"첫 게시글의 내용! 문자열",
         view: 0,
-        like: 0, //좋아요 누른 사람 리스트
+        like: [], //좋아요 누른 사람 리스트
     },
     {
         postId:2,
@@ -19,7 +19,7 @@ const initialState = [
         title:"두번째 게시글",
         content:"두번째 게시글내용!",
         view: 0,
-        like: 0, 
+        like: [], 
     },
 ]
 
@@ -53,7 +53,7 @@ function posts (state=initialState, action) {
             const newPost ={
                 ...action.payload,
                 postId : postId,
-                view:0, like:0
+                view:0, like:[],
             }
             postId++;
             return state.concat(newPost);
@@ -63,6 +63,28 @@ function posts (state=initialState, action) {
                 posts.postId == action.payload 
                 ? ({...posts, view:posts.view+1})
                 : (posts) ));
+        // 좋아요 관련 리듀서
+        case "addLikeUser":
+            // posts의 좋아요 버튼을 눌렀을때 값 확인
+            // 1. userInfoList 의 like > boardId, title - 배열
+            // 2. board의 like 값이 연결 > userEmail - 배열
+            const newAddLike = action.payload.userEmail;
+                // postId가 동일한 것으로 연결 >> 배열의 값을 수정
+                return state.map((posts)=>(
+                        posts.postId == action.payload.postId
+                        ? 
+                        { 
+                        ...posts, 
+                            // like 속성은 posts.like에서 값을 찾아, 값이 있다면 이전 값을, 
+                            // 없다면 추가한 값을 넣도록 삼항연산자 사용
+                        like : posts.like.find(
+                                (postslike)=>(postslike == action.payload.userEmail)
+                                )
+                                ? posts.like
+                                : posts.like.concat(newAddLike)
+                        }
+                        : posts
+                        ))
         default :
             return state;
     }
@@ -73,6 +95,7 @@ export const deletePost =(id)=>({ type:"deletePost", payload:id });
 export const modifyPost =(posts)=>({ type:"modifyPost", payload:posts });
 export const addPost =(posts)=>({ type:"addPost", payload:posts });
 export const updateView =(id)=>({ type:"updateView", payload:id });
+export const addLikeUser =(likeuser)=>({ type:"addLikeUser", payload:likeuser });
 
 
 

@@ -1,16 +1,15 @@
-/**
- * Navbar, footer가 항상 출력되도록
- */
-
+// Navbar, footer가 항상 출력되도록
+import HomeLink from './HomeLink';
+import Footer from './Footer';
+//import { Outlet } from 'react-router-dom';
 const Layout = () => {
 
     return ( 
-        <div className='wrapper'>
-            <div className='contentWrapper'>
-                {/* <Navbar /> */}
-                {/* <Contents/> */}
-            </div>
-            {/* <Footer /> */}
+        <div>
+            <HomeLink />
+            {/* 아울렛 자리에 하위 컴포넌트들 렌더링함 */}
+            {/* <Outlet /> */}
+            <Footer />
         </div>
     );
 }

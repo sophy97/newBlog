@@ -1,6 +1,8 @@
 import { Table } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import "../css/Posts.css";
+
 
 const Posts = () => {
 
@@ -25,9 +27,9 @@ const Posts = () => {
             <div>
                 {
                     user ? 
-                    (<button onClick={()=>{navigate('/posts/addform')}}>글쓰기</button>)
+                    (<button className="addpost-btn" onClick={()=>{navigate('/posts/addform')}}>글쓰기</button>)
                     :
-                    (<Link to='/loginform'>포스트를 작성하려면 로그인하세요</Link>)
+                    (<Link to='/loginform'>로그인하여 포스트 작성하기</Link>)
                 }
             </div>
             <br />

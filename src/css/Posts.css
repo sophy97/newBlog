@@ -1,0 +1,9 @@
+.addpost-btn {
+    border: none;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    transition: 0.25s;
+}
