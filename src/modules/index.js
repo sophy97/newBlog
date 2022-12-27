@@ -7,9 +7,10 @@ import currentUser from "./currentUser";
 import guest from "./guest";
 import posts from "./posts";
 import comments from "./comments";
+import userInfoList from "./userInfoList";
 
 const rootReducer = combineReducers({ 
-    currentUser, guest, posts, comments
+    currentUser, guest, posts, comments, userInfoList
 });
 
 export default rootReducer;

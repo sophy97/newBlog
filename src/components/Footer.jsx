@@ -3,7 +3,7 @@ import "../css/FixedComp.css";
 
 const Footer = () => {
     return ( 
-        <div>
+        <div className="">
             <div className="footer">
                 <br /><br /><br /><br /><br />
                 <h6 className="footer-title">Let's Log<br />

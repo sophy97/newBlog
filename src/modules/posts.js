@@ -17,9 +17,9 @@ const initialState = [
         userName:"John",
         userEmail:"1220@g.com",
         title:"두번째 게시글",
-        content:"두번째 게시글내용!으악으악",
+        content:"두번째 게시글내용!",
         view: 0,
-        like: 0, //좋아요 누른 사람 리스트
+        like: 0, 
     },
 ]
 

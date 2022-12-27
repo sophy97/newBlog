@@ -16,30 +16,29 @@ const HomeLink = () => {
         <div className='Home_Link'>
             {
                 user ? 
-                /**로그인했을때 보이는 화면, 
-                 * 단 관리자페이지는 홈페이지 주인만 */
+                /**로그인했을때 보이는 화면 */
                 (
                 <Navbar expand="lg" style={{borderRadius:'10px'}} >
                 <Container>
                     <Link to='/posts'>포스트</Link>
-                    <Link to='/guest'>방명록</Link>
-                    <Link>관리자페이지</Link>
                     <Link to='/mypage'>마이페이지</Link>
+                    <Link to='/guest'>방명록</Link>
                     <Link onClick={()=>{
-                        dispatch(userLogout());
-                        alert("로그아웃 되었습니다")}}>로그아웃</Link>
+                                dispatch(userLogout());
+                                alert("로그아웃 되었습니다")}}>
+                                로그아웃</Link>
                 </Container>
                 </Navbar>
                 )
                 :
-                /** 로그인되어있지 않을때 보여지는 링크 */
+                /** 로그인되어있지 않을때 */
                 (
                 <Navbar expand="lg" style={{borderRadius:'10px'}} >
                     <Container>
-                        <Link to='/posts'>포스트</Link>
-                        <Link to='/guest'>방명록</Link>
                         <Link to='/loginform'>로그인</Link>
                         <Link to='/about'>소개</Link>
+                        <Link to='/guest'>방명록</Link>
+                        <Link to='/posts'>포스트</Link>
                     </Container>
                 </Navbar>
                 )

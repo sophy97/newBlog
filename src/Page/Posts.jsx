@@ -45,7 +45,7 @@ const Posts = () => {
                         <tr key={posts.postId}>
                             <td>{posts.postId}</td>
                             <td onClick={()=>{toPostPage(posts.postId)}}>{posts.title}</td>
-                            <td>{posts.userName}</td>
+                            <td>{posts.userEmail}</td>
                             <td>{posts.view}</td>
                         </tr>
                     ))}

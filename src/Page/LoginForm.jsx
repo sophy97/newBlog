@@ -6,17 +6,33 @@ import Form from "react-bootstrap/Form";
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../modules/currentUser";
 
 // 해당 파일 css 들고오기
 import '../css/LoginForm.css';
+import { addUserInfo } from "../modules/userInfoList";
 
 
 const LoginForm = () => {
-    // +리덕스의 리듀서 사용을 위한 디스패치 가져오기
-    const dispatch = useDispatch();
+  // ++로그인했을 때, userInfo 값이 있는지 확인하기 위한 userInfoList
+  // (원래는 db에서 불러오는 값).. but리덕스 데이터 쓰므로 모듈에서 가져오기
+  const userInfoList = useSelector((state)=>(state.userInfoList));
+  
+  // +리덕스의 리듀서 사용을 위한 디스패치 가져오기
+  const dispatch = useDispatch();
 
+  // ++로그인 시, userInfo값 있는지 확인하는 함수
+  // 값이 없다면 addUserInfo를 통해서 추가한다
+  const checkUserInfo =(email)=> {
+    const checkUser = userInfoList.find((info)=>(info.userEmail == email));
+    // 조건에 맞는 값이 없다면(undefined), dispatch로 액션함수 실행 > email값 추가
+    if(!checkUser) {
+      dispatch(addUserInfo(email));
+    }
+  }
+  
+  
   // 페이지를 이동하기위한 navigate();
   const navigate = useNavigate();
 
@@ -44,7 +60,7 @@ const LoginForm = () => {
         if ( errorCode == "auth/email-already-in-use") {
           alert("이미 사용하고 있는 이메일입니다")
         }
-        else if ( errorCode=="auth/weak-password") {
+        else if ( errorCode == "auth/weak-password") {
           alert("비밀번호를 6자리 이상으로 작성하세요");
         }
     });
@@ -60,6 +76,8 @@ const emailLogin = () => {
         console.log(user)
         // +리덕스 data와 연결(dispatch) >> 만들어둔 로그인 액션함수 불러오기
         dispatch(userLogin(user));
+        // ++만들어둔 함수에 인자로 초기 state값
+        checkUserInfo(email);
         navigate('/');
     })
     .catch((error) => {
@@ -98,6 +116,8 @@ const emailLogin = () => {
         console.log(user)
         // +리덕스 data와 연결(dispatch) >> 만들어둔 로그인 액션함수 불러오기
         dispatch(userLogin(user));
+        // ++만들어둔 함수 실행 (*주의: user의 email로 접근)
+        checkUserInfo(user.email);
         navigate('/');
 
       }).catch((error) => {

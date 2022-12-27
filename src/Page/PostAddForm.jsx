@@ -12,14 +12,14 @@ import { addPost } from "../modules/posts";
 
 
 const PostAddForm = () => {
+    
+    // 로그인 값 들고오기 **(auth에서 들고온 로그인유저 이메일값)
+    const userEmail = useSelector((state)=>(state.currentUser.email));
 
     // 새로운 포스트를 담을 공간 (초기값 객체형태 맞춰두기)
     // 미리 객체형식임을 작성해두면, 빈값인 경우 undefined 나옴
-    const [posts, setPosts] = useState({});
-
-    // 로그인 값 들고오기
-    const userEmail = useSelector((state)=>(state.currentUser.userEmail));
-    console.log(userEmail);
+    // 로그인된 유저의 이메일을 초기값으로 지정해두기
+    const [posts, setPosts] = useState({userEmail});
 
     // 리덕스에서 들고오고, 라우터로 페이지 이동
     const dispatch = useDispatch();
@@ -31,11 +31,11 @@ const PostAddForm = () => {
         navigate(`/posts/`)
     }
 
-
     // 값 수정시 post내용 수정하는 함수
     const onChanage = (e) => {
-        setPosts({...posts, [e.target.name]:e.target.value});
+        setPosts({...posts, [e.target.name]: e.target.value});
     }
+
 
     return ( 
         <div>
@@ -47,7 +47,10 @@ const PostAddForm = () => {
                 value={posts.title} onChange={(e)=>{onChanage(e)}}></input>
                 </Col>
             </Row>
-            
+
+            <Row>
+                <Col>{posts.userEmail}</Col>
+            </Row>
             <Row className="my-4">
                 <Col>
                 <textarea name="content" onChange={(e)=>{onChanage(e)}}>
@@ -55,13 +58,14 @@ const PostAddForm = () => {
                 </textarea>
                 </Col>
             </Row>
+
             <Row>
                 <Col>
                     <Button size="sm" variant="outline-secondary" onClick={()=>{navigate('/posts')}}>취소</Button> {" "}
                     <Button variant="outline-primary" onClick={onAddPost}>작성완료</Button>
                 </Col>
             </Row> 
-                
+
             </Container> 
         </div>
     );

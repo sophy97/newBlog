@@ -2,10 +2,10 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Container, FloatingLabel, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { addComment } from "../modules/comments";
 import posts, { deletePost, updateView } from "../modules/posts";
-
+import { addLikePost } from "../modules/userInfoList";
 
 const PostPage = () => {
 // params을 통해서 board의 boardId값 전달
@@ -21,7 +21,6 @@ const posts = postList.find((posts)=>(posts.postId == id))
 //const postFind = useSelector((state)=>(state.posts.find((posts)=>(posts.postId == id))) )
 //액션함수 들고오기위한 dispatch
 const dispatch = useDispatch();
-
 
 // 화면 실행되자마자 한번만 실행 (조회수 +1)
 useEffect(()=>{
@@ -53,8 +52,9 @@ const PrintPost =({posts})=> {
     // state 만들어서 전달하기
     const [commentText, setCommentText] = useState("");
     
-    // userEmail을 가져오기 위해 selector
-    const userEmail = useSelector((state)=>(state.currentUser.email));
+    // userEmail을 곧바로 가져오면 로그인 안된 유저가 게시글 보는걸 막게 됨
+    // *수정! user 까지만 들고와서, user == null이면 코멘트 못 달게 
+    const user = useSelector((state)=>(state.currentUser));
 
 
     // commentInput의 버튼에 들어갈 함수 (눌러서 댓글 추가)
@@ -64,7 +64,7 @@ const PrintPost =({posts})=> {
         dispatch(addComment(
             {
                 postId:posts.postId,
-                userEmail:userEmail,
+                userEmail:user.email,
                 text:commentText,
             }
         ))
@@ -92,6 +92,19 @@ const PrintPost =({posts})=> {
         navigate('/posts/modifyform', {state:posts})
     }
 
+    // 좋아요 함수
+    const onAddLike =()=>{
+        // 전달할 값: userEmail, postId, title (객체로)
+        // +로그인 안 되었다면, dispatch실행 안되게 막아줘야 함
+        const postlike = {
+            userEmail:user.email, 
+            postId: posts.postId, 
+            title: posts.title
+        }
+        dispatch(addLikePost(postlike));
+    }
+
+
     return (
         <Container>
             <Row>
@@ -99,10 +112,19 @@ const PrintPost =({posts})=> {
             </Row>
             <Row>
                 <Col><h2>{posts.title}</h2></Col>
-                <Col>
+                {/* 로그인여부(user)에 따라 수정,삭제권한 부여하기 
+                    &&로 묶인 삼항연산자 : 모두 참일때만 뒤에 컴포넌트를 출력
+                    user 가 존재하고, user의 email이 posts모듈의 userEmail값과 같을때만 수정, 삭제권한
+                */}
+                {
+                    user && user.email == posts.userEmail 
+                    &&
+                    <Col>
                     <Button onClick={()=>{toModifyPost(posts)}}>수정</Button>
                     <Button onClick={()=>{onDeletePost(posts.postId)}}>삭제</Button>
-                </Col>
+                    </Col>
+                }
+                
             </Row>
             <Row>
                 <Col>작성자: <b>{posts.userEmail}</b></Col>
@@ -112,13 +134,21 @@ const PrintPost =({posts})=> {
             </Row>
             <Row>
                 <Col>조회수{posts.view}</Col>
-                <Col>좋아요{posts.like}</Col>
+                <Col>
+                <span onClick={onAddLike}>좋아요{posts.like}</span>
+                </Col>
             </Row>
             <hr />
             <Row>
                 <Col>
-                {/* 아래 코멘트 등록 폼으로 값 전달하기 */}
-                <CommentInput commentText={commentText} setCommentText={setCommentText} onAddComment={onAddComment} />
+                {/* 아래 코멘트 등록 폼으로 값 전달하기 
+                    user값의 여부에 따라(로그인여부) 출력하기 */}
+                {
+                    user ? 
+                    <CommentInput commentText={commentText} setCommentText={setCommentText} 
+                                    onAddComment={onAddComment} />
+                        : <p><Link to='/loginform'>로그인해서 코멘트를 작성하세요</Link></p>
+                }
                 </Col>
             </Row>
             <Row>
@@ -136,9 +166,7 @@ const PrintPost =({posts})=> {
                         </div>))) 
                         : (<p>댓글이 없습니다</p>)
                     }
-
             </Row>
-
         </Container>
     );
 }
