@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react";
 import { useState } from "react";
 import Slider from "react-slick";
 import '../css/Home.css';
-import HomeLink from '../components/HomeLink';
+import HomeNav from '../components/HomeNav';
 
 const Home = () => {
     // 현재 시간 출력
@@ -39,12 +39,11 @@ const Home = () => {
         return `${hour} : ${min} : ${second}`;
     }
 
-    // 글귀하나 랜덤하게 출력하는 함수 : 
-    // 문제! 이렇게만 처리하면, printWord가 1초마다 실행돼서 random값 update
+    // 글귀 랜덤 출력 함수 : 
+    // 문제! 이렇게만 처리하면, printWord가 1초마다 실행돼서 random값 update됨
     // >> 왜 실행? 이 함수가 return의 html안에 있으니까
-    // >>> 따라서 이 함수 고정하려면 : useCallback or useMemo를 사용 > return값 고정
-    // 여기서 return값을 고정하려면, useMemo(); 사용 / 이때 변수안에 return값
-
+    // >>> 따라서 이 함수를 고정하려면 : useCallback or useMemo를 사용 > return값 고정
+    // 여기서는 return값 고정 위해, useMemo(); 사용 / 변수안에 return값
     const printWord = useMemo (()=>{
         //js함수 중 Math.random 사용 > 0~1사이 소수 추출함. 
         // 사용하려면 정수값으로: Math.floor > words배열 길이만큼의 범위가 자동 추출
@@ -53,7 +52,7 @@ const Home = () => {
     },[]);
 
     // 슬릭 화면 사용
-    // https://react-slick.neostack.com/docs/api 속성 확인하고 바꿔라
+    // https://react-slick.neostack.com/docs/api 속성 확인하고 커스텀
     const settings = {
         arrows: false,
         dots: false,
@@ -69,50 +68,44 @@ const Home = () => {
         "backg_1.jpg",
         "backg_2.jpg", 
         "backg_3.jpg", 
+        "backg_4.jpg",
     ]);
 
 
 
     return (
         <div>
-        {/* 슬릭 출력될 화면 */}
             <>  
+            {/* 슬릭 출력될 화면 */}
                 <Slider {...settings}>
                 {/* slider는 내용이 커지면 다음 페이지에 넘어감
                     따라서 크기 지정해서 사용
                     이미지 주소로 바로 접근 불가 > require사용해서 이미지 주소 지정 */}
-                    {/* 이렇게도 가능함 !
-                    <div>
-                    <img style={{width:"100%"}}
-                        src={require(`../img/backg_3.jpg`)}/>
-                    </div> 
-                    */}
-                    {/* map으로 출력하고싶음 > 배열값 필요 */}
-                        {
-                            imgList.map((img, idx)=>(
-                            <div key={idx}>
-                                <div
-                                style={{
-                                    width:"100%",
-                                    height:"65vh",
+                {/* map으로 출력 위해 > 배열값 필요 */}
+                    {
+                        imgList.map((img, idx)=>(
+                        <div key={idx}>
+                            <div style={{
+                                    width:"100%", height:"65vh",
                                     backgroundImage :'url('+require("../img/"+img)+')',
-                                    backgroundSize:"cover"
-                                }}></div>
+                                    backgroundSize:"cover" }}>
                             </div>
-                            ))
-                        }
+                        </div>
+                        ))
+                    }
                 </Slider>
+                <HomeNav />
                 <div className="Home_main">
                     {/* 현재 시간 출력 > 함수 결과값 바로 실행 */}
                     <h1>{printClock()}</h1>
-                    <br />
                     {/* 배열 안 {명언}중 하나를 출력 */}
                     {/* useMemo사용한 경우, 그 함수의 return값이 
                         변수 안에 존재 > 따라서 사용할 때 함수실행X, 변수이름으로만 사용함 */}
-                    <h3>{printWord.text}</h3>
-                    <p>{printWord.author}</p>          
-                </div>
-            <HomeLink />
+                        <div className="quote-txt">
+                            <h2>{printWord.text}</h2>
+                            <p>{printWord.author}</p>    
+                        </div>
+                </div> 
             </>
         </div>
     );

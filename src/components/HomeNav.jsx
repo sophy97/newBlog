@@ -1,11 +1,11 @@
-/* 이거 드롭다운으로 내용 옮기기*/
-
+/* 맨 처음 홈 화면에 보여줄 네비게이션 링크들 */
 import { Container, Navbar } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { userLogout } from '../modules/currentUser';
+// 페이지 내 네브바와 같은 폰트 적용 (Home.css)
 
-const HomeLink = () => {
+const HomeNav = () => {
     
     // 리덕스의 state값을 가져와서 확인 > useSelector로 값 선택해서 가져온다
     // currentUser.js의 전체 state값 까지 접근: "user"
@@ -35,10 +35,10 @@ const HomeLink = () => {
                 (
                 <Navbar expand="lg" style={{borderRadius:'10px'}} >
                     <Container>
-                        <Link to='/loginform'>로그인</Link>
+                        <Link to='/posts'>포스트</Link>
                         <Link to='/about'>소개</Link>
                         <Link to='/guest'>방명록</Link>
-                        <Link to='/posts'>포스트</Link>
+                        <Link to='/loginform'>로그인</Link>
                     </Container>
                 </Navbar>
                 )
@@ -47,4 +47,4 @@ const HomeLink = () => {
     );
 }
 
-export default HomeLink;
+export default HomeNav;

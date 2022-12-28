@@ -35,7 +35,7 @@ const Posts = () => {
             <br />
             <Table striped>
                 <thead>
-                    <tr>
+                    <tr className="posts-table">
                     <th>번호</th>
                     <th>제목</th>
                     <th>작성자</th>
@@ -51,7 +51,6 @@ const Posts = () => {
                             <td>{posts.view}</td>
                         </tr>
                     ))}
-                    
                 </tbody>
             </Table>
         </div>

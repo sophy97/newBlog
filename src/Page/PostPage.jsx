@@ -145,7 +145,7 @@ const PrintPost =({posts})=> {
             </Row>
             <Row className="my-4">
                 <Col>
-                <div className="post-content">{posts.content}</div>
+                <h4 dangerouslySetInnerHTML={{__html: posts.content}}></h4>
                 </Col>
             </Row>
             <Row>

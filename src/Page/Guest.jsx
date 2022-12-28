@@ -54,8 +54,8 @@ const Guest = () => {
             onClick={()=>{dispatch(addGuest({name:name, text:text}))}}
             >작성</Button>
             <hr />
-            <h4>작성된 방명록 출력공간</h4> <br />
-            <Card style={{ width:"80%" }}>
+            <h4>방명록</h4> 
+            <Card style={{ width:"100%" }}>
                 <ListGroup variant="flush">
                     {
                         guestList.map((guest)=> (
