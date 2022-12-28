@@ -17,7 +17,7 @@ const Guest = () => {
     const [text, setText] = useState("방명록을 남겨보세요");
     
     return ( 
-        <div className="mx-5 mt-5">
+        <div>
             {
                 currentUser ? (
                     <>

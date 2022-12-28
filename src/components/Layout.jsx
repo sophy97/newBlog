@@ -1,15 +1,18 @@
-// Navbar, footer가 항상 출력되도록
-import HomeLink from './HomeLink';
-import Footer from './Footer';
-//import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import PageLink from './PageLink';
 const Layout = () => {
 
     return ( 
         <div>
-            <HomeLink />
-            {/* 아울렛 자리에 하위 컴포넌트들 렌더링함 */}
-            {/* <Outlet /> */}
-            <Footer />
+            {/* <HomeLink /> */}
+            <PageLink />
+            {/* 아울렛 자리에 하위 컴포넌트들이 렌더링됨 
+                일괄 스타일 주기 위해, 아울렛을 감싼 div에 속성 적용*/}
+            <div className="mx-5 mt-5" >
+                <Outlet />
+            </div>
+            
+            
         </div>
     );
 }

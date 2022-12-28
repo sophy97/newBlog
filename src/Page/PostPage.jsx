@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { addComment } from "../modules/comments";
 import { addLikeUser, deletePost, updateView } from "../modules/posts";
-import { addLikePost } from "../modules/userInfoList";
+import { addLikePost } from "../userInfoList";
 import "../css/PostPage.css";
 
 

@@ -11,7 +11,7 @@ import { userLogin } from "../modules/currentUser";
 
 // 해당 파일 css 들고오기
 import '../css/LoginForm.css';
-import { addUserInfo } from "../modules/userInfoList";
+import { addUserInfo } from "../userInfoList";
 
 
 const LoginForm = () => {

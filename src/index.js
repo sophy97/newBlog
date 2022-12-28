@@ -12,7 +12,7 @@ import { BrowserRouter} from 'react-router-dom';
 
 // js, css를 들고 올때 import해서만 들고오는 경우
 // : 전체 파일에 그 내용이 실행 적용 (어디에서 한곳에 들고와도 ok)
-import './database/firebase';
+import './firebase';
 
 // 리덕스 사용을 위해 리액트-리덕스에서 프로바이더 추가
 import { Provider } from 'react-redux';

@@ -24,10 +24,10 @@ const Posts = () => {
 
     return ( 
         <div>
-            <div>
+            <div style={{textAlign:"end"}}>
                 {
                     user ? 
-                    (<button className="addpost-btn" onClick={()=>{navigate('/posts/addform')}}>글쓰기</button>)
+                    (<button className="addpost-btn" onClick={()=>{navigate('/posts/addform')}}>포스트 작성</button>)
                     :
                     (<Link to='/loginform'>로그인하여 포스트 작성하기</Link>)
                 }

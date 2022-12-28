@@ -1,9 +1,18 @@
+/* 포스트 목록이 출력되는 Posts.jsx의 css입니다 */
+/* 참고:
+    !important : 부트스트랩등 다른 css와 겹칠때, 이 속성을 우선하겠다는 의미 */
 .addpost-btn {
     border: none;
     display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
     padding: 5px 10px;
     border-radius: 15px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    transition: 0.25s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+.addpost-btn:hover {
+    background-color: rgb(220, 221, 221);
+    transition:2ms;
+    color:black;
 }

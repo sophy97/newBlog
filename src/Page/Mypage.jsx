@@ -1,5 +1,6 @@
+import { Col, Container, Row } from 'react-bootstrap';
 import { useSelector } from "react-redux";
-
+import "../css/Mypage.css";
 
 const Mypage = () => {
 
@@ -10,21 +11,23 @@ const Mypage = () => {
                     .find((info)=>(info.userEmail == user.email)))
 
     return ( 
-        <div>
-            <h3>유저 페이지</h3>
-            <p>유저 이메일: {userInfo.userEmail}</p>
-            <h6>좋아요리스트</h6>
-            <ul>
-                {/* userInfo안의 like[]를 map으로 출력한다 */}
-                {
-                    userInfo.like.map((like)=>(
-                        <li key={like.postId}>
-                            {like.title}
-                        </li>
-                    ))
-                }
-            </ul>
-        </div>
+        <Container>
+        <Row>
+            <Col>
+                <p>유저 이메일 : {userInfo.userEmail}</p>
+            </Col>
+            <Col className='likelist'>
+                <h5>좋아요 리스트</h5>
+                <ul>
+                    {
+                        userInfo.like.map((l)=>(
+                            <li key={l.postId}>{l.title}</li>
+                        ))
+                    }
+                </ul>
+            </Col>
+        </Row>
+    </Container>
     );
 }
 

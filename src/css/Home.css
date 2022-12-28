@@ -6,10 +6,10 @@
 }
 
 .Home_main {
-    width: 80%;
+    width: 100%;
     position: relative;
-    top : 20%;
     padding: 20px 30px;
+    margin-top: 20px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
@@ -19,12 +19,12 @@
     font-size: 3.5em;
     font-family: 'KyoboHandwriting2020A';
 }
-.Home_main>p{
+.Home_main >p{
     margin: 0;
     font-size: 1.2em;
 }
 /* p태그의 동위선택연산자, p태그 바로 뒤의 p태그를 선택한다*/
-.Home_main>p+p{
+.Home_main >p+p{
     color: darkblue;
 }
 

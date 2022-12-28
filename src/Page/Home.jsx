@@ -41,7 +41,7 @@ const Home = () => {
 
     // 글귀하나 랜덤하게 출력하는 함수 : 
     // 문제! 이렇게만 처리하면, printWord가 1초마다 실행돼서 random값 update
-    // >> 왜 실행되는데? 이 함수가 return의 html안에 있으니까
+    // >> 왜 실행? 이 함수가 return의 html안에 있으니까
     // >>> 따라서 이 함수 고정하려면 : useCallback or useMemo를 사용 > return값 고정
     // 여기서 return값을 고정하려면, useMemo(); 사용 / 이때 변수안에 return값
 
@@ -103,14 +103,15 @@ const Home = () => {
                         }
                 </Slider>
                 <div className="Home_main">
-                {/* 현재 시간 출력 > 함수 결과값 바로 실행 */}
-                <h1>{printClock()}</h1>
-                {/* 배열 안 {명언}중 하나를 출력 */}
-                {/* useMemo사용한 경우, 그 함수의 return값이 
-                    변수 안에 존재 > 따라서 사용할 때 함수실행X, 변수이름으로만 사용함 */}
-                <h3>{printWord.text}</h3>
-                <p>{printWord.author}</p>          
-            </div>
+                    {/* 현재 시간 출력 > 함수 결과값 바로 실행 */}
+                    <h1>{printClock()}</h1>
+                    <br />
+                    {/* 배열 안 {명언}중 하나를 출력 */}
+                    {/* useMemo사용한 경우, 그 함수의 return값이 
+                        변수 안에 존재 > 따라서 사용할 때 함수실행X, 변수이름으로만 사용함 */}
+                    <h3>{printWord.text}</h3>
+                    <p>{printWord.author}</p>          
+                </div>
             <HomeLink />
             </>
         </div>
