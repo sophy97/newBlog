@@ -12,6 +12,21 @@
     font-family: 'SLEIGothicTTF';
 }
 
+/* page nav바 로그아웃만 오른쪽에 붙이기 - span tag */
+.pgnav-lgout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    margin-right: 40px;
+}
+.pgnav-lgout:hover {
+    cursor: pointer;
+}
+
+
+
+
 /* .footer {
     background-color: #282828;
     color:#D2E1FF;

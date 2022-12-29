@@ -151,7 +151,7 @@ const PrintPost =({posts})=> {
             <Row>
                 <Col>조회수{posts.view}</Col>
                 <Col>
-                <span onClick={onAddLike}>좋아요 {posts.like.length}</span>
+                <span onClick={onAddLike}>❤{posts.like.length}</span>
                 </Col>
             </Row>
             <hr />
