@@ -23,7 +23,7 @@ const PostAddForm = () => {
     // 로그인된 유저의 이메일을 초기값으로 지정해두기
     const [posts, setPosts] = useState({ userEmail });
     // + toast 에디터의 값 받아올 공간 state
-    const [content, setContent] = useState("")
+    const [content, setContent] = useState("");
 
     // 리덕스에서 들고오고, 라우터로 페이지 이동
     const dispatch = useDispatch();
@@ -80,21 +80,13 @@ const PostAddForm = () => {
                         </Form.Control>
                     </Col>
                 </Row>
-                {/* toast ui로 textarea 대체하기 */}
+                {/* toast ui로, 기존 만들어둔 textarea 대체하기 */}
                 <Row>
                     <Col>
                     <div id="editor" ref={editorContent} onChange={(e)=>{onChanage(e)}}>
                     </div>
                     </Col>
                 </Row>
-                {/* <Row className="my-4">
-                    <Col>
-                    <textarea name="content" onChange={(e)=>{onChanage(e)}}>
-                        {posts.content}
-                    </textarea>
-                    </Col>
-                </Row> */}
-
                 <Row>
                     <Col>
                         <Button size="sm" variant="outline-secondary" onClick={()=>{navigate('/posts')}}>취소</Button> {" "}
