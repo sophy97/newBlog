@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { userLogout } from '../modules/currentUser';
 
 function PageNav() {
@@ -12,6 +12,7 @@ function PageNav() {
     const user = useSelector((state)=>(state.currentUser));
     // 로그아웃 액션함수 들고오기위한 dispatch
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     return (
         <Navbar bg="light" expand="md">
@@ -36,6 +37,7 @@ function PageNav() {
                     ? 
                     <span onClick={()=>{
                             dispatch(userLogout()); alert("로그아웃 되었습니다");
+                            navigate('/');
                             }} className='nav-link pgnav-lgout'> 로그아웃</span>
                     :
                     null
