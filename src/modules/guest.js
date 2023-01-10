@@ -4,7 +4,7 @@
 // 초기값 (여러개 리스트 > 배열 속 객체형태로 작성)
 const initialState = [
     {guestId : 1, name:"sophy", text:"첫번째 작성된 방명록"},
-    {guestId : 2, name:"익명", text:"두번째 방문자 들렀다 감"},
+    {guestId : 2, name:"익명", text:"두번째 방문자의 방명록"},
 ];
 // initialState 밖에, 값을 구분하기 위한 id 선언
 // (변해야 하는 값이므로 const대신 let)

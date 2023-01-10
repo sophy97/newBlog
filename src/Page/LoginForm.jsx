@@ -14,6 +14,10 @@ import '../css/LoginForm.css';
 import { addUserInfo } from "../userInfoList";
 
 
+// // db에 접근해서 데이터를 꺼내게 도와줄 친구들
+// import { collection, doc, setDoc } from "firebase/firestore";
+
+
 const LoginForm = () => {
   // ++로그인했을 때, userInfo 값이 있는지 확인하기 위한 userInfoList
   // (원래는 db에서 불러오는 값).. but리덕스 데이터 쓰므로 모듈에서 가져오기
@@ -132,7 +136,8 @@ const emailLogin = () => {
       });
   }
 
-
+  /**firestore 에 user 추가 */
+  
 
   return (
     <div>

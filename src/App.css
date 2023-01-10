@@ -1,1 +1,24 @@
+@font-face {
+    font-family: 'SLEIGothicTTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
+
+.Btn {
+    font-family: 'SLEIGothicTTF';
+    border: none;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+.Btn:hover {
+    background-color: rgb(220, 221, 221);
+    transition:2ms;
+    color:black;
+}

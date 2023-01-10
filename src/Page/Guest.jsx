@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FloatingLabel, Form, Button, Card, ListGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addGuest } from "../modules/guest";
-
+import "../App.css";
 
 const Guest = () => {
     // +리덕스로 guest의 값 가져와서 map으로 출력
@@ -38,7 +38,7 @@ const Guest = () => {
                         style={{border:"none", borderBottom:"1px solid lightgray"}}
                         onChange={(e)=>{setName(e.target.value)}} />
                     </FloatingLabel>
-                    <FloatingLabel controlId="floatingTextarea2" label="작성할 내용">
+                    <FloatingLabel controlId="floatingTextarea2" label="방명록 내용 남기기">
                         <Form.Control
                         as="textarea" onChange={(e)=>{setText(e.target.value)}}
                         style={{ height: '100px' }} />
@@ -50,9 +50,9 @@ const Guest = () => {
             <br />
             {/* onClick이벤트에 리듀서함수(guest.js) 추가 예정 */}
             {/* <button onClick={()=>{dispatch(addGuest({name:name, text:text}))}}>작성</button> */}
-            <Button variant="outline-primary"
+            <button className="Btn"
             onClick={()=>{dispatch(addGuest({name:name, text:text}))}}
-            >작성</Button>
+            >작성</button>
             <hr />
             <h4>방명록</h4> 
             <Card style={{ width:"100%" }}>

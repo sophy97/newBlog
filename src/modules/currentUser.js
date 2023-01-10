@@ -2,13 +2,7 @@
  * 로그인여부 알기 위해 초기값 null로 설정
  * 안에 [], {}를 넣어두면 값이 존재한다고 판단하므로
  */
-const initialState = [
-    {   
-        userLogin : false,
-        userPro:null,
-    },
-    
-]
+const initialState = null;
 
 // 데이터관리 방법2
 // { userinfo: null, login:false }와 같이 객체 안에 속성으로 추가해서 사용

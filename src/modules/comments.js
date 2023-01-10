@@ -6,13 +6,13 @@ const initialState =[
         commentId:1,
         postId:1,
         userEmail:"seophia97@naver.com",
-        text:"포스트1번 잘봣다",
+        text:"포스트1 첫댓글!",
     },
     {
         commentId:1,
         postId:2,
-        userEmail:"seophia97@naver.com",
-        text:"포스트2,댓글1의 내용",
+        userEmail:"new@naver.com",
+        text:"포스트2의 처음 댓글!",
     }
 ]
 
