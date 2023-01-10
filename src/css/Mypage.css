@@ -1,9 +1,14 @@
-.likelist {
-    border: 2px solid darkgray;
+.likelist_box {
+    margin-top: 30px;
+    border: 3px solid #ccc;
     text-align: center;
     border-radius: 10px;
 }
 
-.likelist li {
+.likelist_box li {
     list-style-type: none;
+}
+
+.userimg_box {
+    margin-top: 30px;
 }

@@ -1,0 +1,24 @@
+/* .cal-box {
+    border: 4px solid lightgray;
+    border-radius: 10px;
+} */
+@font-face {
+    font-family: 'Rock Salt';
+    font-style: normal;
+    font-weight: 500;
+    src: url(https://fonts.gstatic.com/s/rocksalt/v18/MwQ0bhv11fWD6QsAVOZrt0M6.woff2) format('woff2');
+}
+.cal-table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    border-style: hidden;
+    box-shadow: 0 0 0 3px lightgray;
+
+}
+
+th, td {
+    padding: 15px;
+    font-family: 'helvetica neue', helvetica, arial, sans-serif;
+}
