@@ -3,6 +3,7 @@ import { FloatingLabel, Form, Button, Card, ListGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addGuest } from "../modules/guest";
 import "../App.css";
+import GameComp from './../components/GameComp';
 
 const Guest = () => {
     // +리덕스로 guest의 값 가져와서 map으로 출력
@@ -18,6 +19,7 @@ const Guest = () => {
     
     return ( 
         <div>
+            <GameComp />
             {
                 currentUser ? (
                     <>

@@ -6,9 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // firestore test
 import {db} from "./firebase";
 import {collection} from "firebase/firestore";
-import { doc, getDoc } from "firebase/firestore";
-import { query, where, getDocs } from "firebase/firestore";
-
 
 import Home from './Page/Home';
 import LoginForm from './Page/LoginForm';
@@ -28,24 +25,7 @@ function App() {
   // 컬렉션 자체를 참조
   const postRef = collection(db, "posts");
   console.log(postRef);
-  // 문서 가져오기 (getDoc)
-  /**const docRef = doc(db, "posts");
-   *  const docSnap = await getDoc(docRef); 
-   * if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
-  } else {
-    // doc.data() will be undefined in this case
-    console.log("No such document!");
-  }
 
-  const q = query(collection(db, "posts"), where("user_uid", "==", ));
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
-  });
-  
-   */
 
   return (
     <div className="App">
