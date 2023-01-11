@@ -11,10 +11,7 @@ import Weather from "../components/Weather";
 const About = () => {
     return ( 
         <>
-        
-        
         <br />
-        
         <Container>
             <Row>
                 <Col> <Calendar /> </Col>
@@ -23,9 +20,9 @@ const About = () => {
             <br />
             <Row>
             <div className="video-box">
-            <video autoPlay muted loop src="write.mp4"
-            style={{width:'100%', height:'auto', alignContent:'center'}}>
-            </video>
+                <video autoPlay muted loop src="write.mp4"
+                style={{width:'100%', height:'auto', alignContent:'center'}}>
+                </video>
             </div>
             </Row>
         </Container>

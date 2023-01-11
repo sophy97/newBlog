@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useSelector } from "react-redux";
-import Calendar from '../components/Calendar';
 import "../css/Mypage.css";
 
 const Mypage = () => {

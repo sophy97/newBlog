@@ -56,38 +56,43 @@ import "../css/GameComp.css";
         }, [changeHand]);
 
     return ( 
-        <div>
+        <div className='gameWrapper'>
             <br/><br/>
-            <h3><Spinner animation="border" size='xl' variant="warning" />　컴퓨터와 가위바위보 한 판</h3>
+            <h3><Spinner animation="border" size='xl' variant="warning" />　
+            Mini-game : Rock paper scissors</h3>
             <br /><br />
-
-            <Container className='game-box'>
+            <Container className='game-con'>
                 <Row>
-                    <Col><div><h1>{computer}</h1><p>computer</p></div></Col>
-                    <Col><div><h2>{result}</h2><p>vs</p></div></Col>
-                    <Col><div><h1>{user}</h1><p style={{color:'darkorange'}}>You</p></div></Col>
+                    <Col><div><h1>{computer}</h1><b>computer</b></div></Col>
+                    <Col><div><h2>{result}</h2><b style={{color:"red"}}>vs</b></div></Col>
+                    <Col><div><h1>{user}</h1><b style={{color:'darkorange'}}>You</b></div></Col>
                 </Row>
                 <Row>
-                    <Col><span style={{backgroundColor: 'rgb(248, 228, 203)', borderRadius:'30%'}}><br/>Random</span></Col>
+                    <Col><span style={{fontSize:"20px"}}><br/>Random</span></Col>
                     <Col><div></div></Col>
-                    <Col>
+                    <Col className="mt-4">
                         <div className='RSPbtn-box'>
-                        <button disabled={btnDisabled} onClick={onClickBtn('✌')}>
-                        가위
+                        <button disabled={btnDisabled} className="btn-game" onClick={onClickBtn('✊')}>
+                        Rock
                         </button>
-                        <button disabled={btnDisabled} onClick={onClickBtn('✊')}>
-                        바위
+                        <button disabled={btnDisabled} className="btn-game" onClick={onClickBtn('✋')}>
+                        Paper
                         </button>
-                        <button disabled={btnDisabled} onClick={onClickBtn('✋')}>
-                        보
+                        <button disabled={btnDisabled} className="btn-game" onClick={onClickBtn('✌')}>
+                        Scissors
                         </button>
                         </div>
                     </Col>
                 </Row>
+                <Row>
+                    
+                    
+                    
+                </Row>
                 <Row style={{marginTop:'15px'}}> 
                     <Col><div></div></Col>
                     <Col><div></div></Col>
-                    <Col>your Score : {score}</Col>
+                    <Col>your Score : <b style={{color:"red"}}>{score}</b></Col>
                 </Row>
             </Container>
         <br /><br /><br />
